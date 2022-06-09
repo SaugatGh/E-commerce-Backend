@@ -34,7 +34,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(500).json(err);
   }
 });
-// // DELETE
+//  DELETE
 
 router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
@@ -45,7 +45,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   }
 });
 
-// // GET USER CART
+//  GET USER CART
 router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const cart = await Cart.findOne({ userId: req.params.userId });
@@ -55,7 +55,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
     res.status(500).json(err);
   }
 });
-// // GET ALL
+//  GET ALL
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {
     const carts = await Cart.find();

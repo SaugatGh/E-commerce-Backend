@@ -4,9 +4,12 @@ const verifyToken = (req, res, next) => {
   const authHeader = req.headers.token;
   if (authHeader) {
     const token = authHeader.split(" ")[1];
+    if (!token) return res.status(401).send({ message: "Invalid Credentails" });
     // This is space because in put header token in Bearer we have space between bearer and access token.
+
     jwt.verify(token, process.env.JWT_SEC, (err, user) => {
-      if (err) res.status(403).json("Token is not valid!");
+      if (err) return res.status(403).json("Token is not valid!");
+      // console.log(user)
       req.user = user;
       next();
     });

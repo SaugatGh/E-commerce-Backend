@@ -1,9 +1,5 @@
 const Product = require("../models/Product");
-const {
-  verifyToken,
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
-} = require("./verifyToken");
+const { verifyTokenAndAdmin } = require("./verifyToken");
 
 const router = require("express").Router();
 
@@ -75,7 +71,6 @@ router.get("/", async (req, res) => {
     } else {
       products = await Product.find();
     }
-    // console.log('products',products) --sagar
 
     res.status(200).json(products);
   } catch (err) {
